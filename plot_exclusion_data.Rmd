@@ -1,0 +1,107 @@
+---
+title: "Midterm Project Part Two"
+author: "YOUR NAME GOES HERE"
+output: html_document
+---
+<!-- Remember to set a custom THEME and HIGHLIGHTING in the YAML front matter above -->
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+### All libraries must be loaded in this chunk
+### Any global options you'd like to set (a global ggplot theme for example) should go here
+```
+
+
+
+## Load Data
+
+```{r}
+## Read in and save your two tidy CSV files here for downstream use. 
+## Show their output with head() for reproduciblity!
+
+```
+
+
+## Figure W
+
+```{r}
+## Code to prepare data for plotting goes here. 
+## It should save a dataset you can use to plot in the next chunk.
+```
+
+```{r}
+## plot the data here.
+## ensure an appropriate figure size and legible output by setting the fig.width and fig.height for this chunk
+```
+
+
+Replace this text with a few sentences intepreting your figure, **according to the directions!**
+
+## Figure X
+
+```{r}
+## Code to prepare data for plotting goes here. 
+## It should save a dataset you can use to plot in the next chunk.
+```
+
+```{r}
+## plot the data here.
+## ensure an appropriate figure size and legible output by setting the fig.width and fig.height for this chunk
+```
+
+
+Replace this text with a few sentences intepreting your figure, **according to the directions!**
+
+
+## Figure Y
+
+```{r}
+## Code to prepare data for plotting goes here. 
+## It should save a dataset you can use to plot in the next chunk.
+```
+
+```{r}
+## plot the data here.
+## ensure an appropriate figure size and legible output by setting the fig.width and fig.height for this chunk
+```
+
+
+Replace this text with a few sentences intepreting your figure, **according to the directions!**
+
+
+
+## Figure Z
+
+```{r}
+## Code to prepare data for plotting goes here. 
+## It should save a dataset you can use to plot in the next chunk.
+```
+
+```{r}
+## plot the data here.
+## ensure an appropriate figure size and legible output by setting the fig.width and fig.height for this chunk
+```
+
+
+Replace this text with a few sentences intepreting your figure, **according to the directions!**
+
+
+<!-- 
+Remove the overall HTML comment if you want to do the bonus. 
+
+## BONUS FIGURE
+
+```{r}
+## Code to prepare data for plotting goes here. 
+## It should save a dataset you can use to plot in the next chunk.
+```
+
+```{r}
+## plot the data here.
+## ensure an appropriate figure size and legible output by setting the fig.width and fig.height for this chunk
+```
+
+
+Replace this text with a few sentences intepreting your figure, **according to the directions!**
+
+-->

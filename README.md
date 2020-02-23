@@ -36,14 +36,13 @@ In this paper, the authors sought to assess the effects of predator (here, parro
 #### Task One: Tidying the data
 + Perform this in an **R script** called `tidy_exclusion_data.R` which has been templated out for you. Be sure to move this script into your name directory before starting! 
 	+ To read in your data, use the `tidyverse` package `readxl`. This will not be loaded with the "primary" tidyverse libraries, but it will be installed when you install tidyverse. Make sure to load this package and read about its function `readxl::read_excel`.
-	+ Make sure to use a variable for the path to the datasets when you read them in - do NOT hardcode the path!
-
++ Generally speaking, R scripts are NOT interactive documents! Therefore, you don't have to "show" or "print" the data for the FINAL product. When working on building up the script though, you have to be going line-by-line to make sure it all works.
 + There are three (four for plotBites) treatments which are not given consistently in the raw data. For your final product, ensure the levels of this variable are "Control", "Partial", "Full", and for the extra one in plotBites "External". Make sure you understand what these are from the paper itself.
 + Make sure your data is TIDY with one column per variable. You should consider "month" and "year" to be separate variables for this project - "date" is not an acceptable column to retain. But, this is not the only case of untidiness in the data!
 + All years should be converted to their 4-digit form, i.e. "2014" not "14".
 + Make sure there are no duplicate rows in your tidied data - one way to absolutely confirm this is to use `dplyr::distinct()`
 + There WILL be NA's in the final output because some data is indeed missing! This is completely fine, but you must ensure that you are not accidentally (usually done by poor choices in joining) replacing known values with NAs.
-
++ **BONUS is possible here** by including at least TWO assertions in your script that check _properties of the data_. 
 
 #### Task Two: Visualizing the data
 In the manuscript, the authors use primarily barplots with mean and standard error (GROAN) to display distributions of data. Your task is to remake **FOUR** figures from the paper from the options below. Choose choose one panel from each option, unless of course there is only one option. Your adventure!
@@ -53,9 +52,7 @@ In the manuscript, the authors use primarily barplots with mean and standard err
 + Figure 6 A
 + Figure 6 either panel B or C
 
-The goal is NOT to simply regurgitate their figures, but rather to **reimagine their figures to be more informative and frankly with improved designs.** For all figures you recreate, you must show _actual distributions of the data_, for example with boxplots, violin plots, histograms, density plots, etc. **Summarized means and SE/SD are absolutely not allowed and will receive NO CREDIT.**
-
-Rules:
+The goal is NOT to simply regurgitate their figures, but rather to **reimagine their figures to be more informative and frankly with improved designs.** For all figures you recreate, you must show _actual distributions of the data_, for example with boxplots, violin plots, histograms, density plots, etc. **Summarized means and SE/SD are absolutely not allowed and will receive NO CREDIT.** Rules:
 
 + Perform all wrangling and plotting in a *well-organized* Rmarkdown file called `plot_exlusion_data.Rmd` which should knit to `plot_exclusion_data.html`. This file has been templated for you - keep it organized as templated! Again, be sure to move this script into your name directory before starting!
 + Each figure MUST:
@@ -64,6 +61,12 @@ Rules:
 	+ Reveal itself legibly and with an appropriate aspect ratio
 + Your RMarkdown document must use a **different baseline theme** from the default as well as a **syntax highlighting style** of your choosing
 + Each section should be titled with the name of the figure you are recreating, e.g. "Figure 3B" could be a section header.
++ For each plot you should write a few sentences (in regular color) about whether the updated figure "agrees" with the figure in the manuscript, or whether they communicate different messages about the results.
+ 
+**You can also get a BONUS** here!! Make a fifth plot of YOUR CHOOSING that is entirely unique and is NOT a reimagined figure from the paper. To get credit for your bonus, you must explain:
+
++ What scientific question does the plot address?
++ What trends does the plot show? What can you conclude from this figure? 
 
 
 #### Task Three: Visualizing the data with a flipbook
@@ -105,7 +108,7 @@ What will your flipbook be of? The authors make this claim:
 + **DO YOU HAVE ENOUGH COMMITS?**
 	+ For full credit there should be at least FIVE commits with INFORMATIVE ASSOCIATED MESSAGES. For example, only the first 2-3 commit messages in this XKCD are informative: [this](https://xkcd.com/1296/).
 + Did you submit as a pull request by the deadline?
-+ Do all R files run/knit without errors?
++ Do all R files run/knit without errors **when run from the directory where they reside**?
 	+ Is your knitted Rmarkdown document PROFESSIONAL? Think: Would I be comfortable sharing this document with a potential **future employer**?
 + Did you COMMENT your code?
 + Did you actually do the questions/tasks you were asked to do? For example,
@@ -117,6 +120,9 @@ What will your flipbook be of? The authors make this claim:
 + Have you removed extraneous code?
 + You will lose major points if you ever print out the _whole_ data frame in your document. It's too big. Don't do it.
 + You will lose points for any lines of code that INSTALL libraries in your files. Installations must happen separately. When grading on my end, I will ensure all installations.
++ All plots must be made with `ggplot()`. There are no exceptions.
++ Do all Rmarkdown chunks appropriately kept with `echo=TRUE, include=TRUE`? Never turn these off!! (Except for the ONE `include=FALSE` chunk as part of your flipbook, but that's a separate concept).
++ Finally, as usual, do not cheat. Do. Not. Cheat. **This is not a group project**. You MUST write YOUR OWN CODE for aspects. However, also as usual, you SHOULD be talking with classmates about how to solve the questions and get insight into how to execute your plan. Google is fine! Copy/pasting from StackOverflow or similar is bad, but using an internet person's code as a guiding concept to help you write your code is fine!
 
 
 
