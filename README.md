@@ -73,7 +73,8 @@ You're going to make a flipbook! What's a flipbook?
 
 + Get familiar with flipbooks conceptually by watching this [rstudio::conf 2020 talk](https://resources.rstudio.com/rstudio-conf-2020/flipbooks-evangeline-reynolds).
 + It comes in the package `flipbookr`[https://github.com/EvaMaeRey/flipbookr/]()! Learn more about this package.
-+ Because this package is not yet on CRAN, you will need to install it from the github repository using the `remotes` package. Many times this is written instead as the `devtools` package, but the maintainers of `devtools` are no longer retaining this specific functionality in future releases, so it is best to use `remotes`.
+	+ This [tweet](https://twitter.com/evamaerey/status/1222303004541341696?s=12) is nice, BUT I don't recommend `devtools`. Read next bullet...
+	+ Because this package is not yet on CRAN, you will need to install it from the github repository using the `remotes` package. Many times this is written instead as the `devtools` package, but the maintainers of `devtools` are no longer retaining this specific functionality in future releases, so it is best to use `remotes`.
 	
 	```{r}
 	### Run this in the console for install flipbookr. 
