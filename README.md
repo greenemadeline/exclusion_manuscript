@@ -105,7 +105,7 @@ What will your flipbook be of? The authors make this claim:
 ### How will you be graded?
 
 + **DO YOU HAVE ENOUGH COMMITS?**
-	+ For full credit there should be at least FIVE commits with INFORMATIVE ASSOCIATED MESSAGES. For example, only the first 2-3 commit messages in this XKCD are informative: [this](https://xkcd.com/1296/).
+	+ For full credit there should be at least FIVE commits with INFORMATIVE ASSOCIATED MESSAGES. For example, only the first 2 commit messages in this XKCD are informative: [this](https://xkcd.com/1296/).
 + Did you submit as a pull request by the deadline?
 + Do all R files run/knit without errors **when run from the directory where they reside**?
 	+ Is your knitted Rmarkdown document PROFESSIONAL? Think: Would I be comfortable sharing this document with a potential **future employer**?
