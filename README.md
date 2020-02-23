@@ -112,8 +112,8 @@ What will your flipbook be of? The authors make this claim:
 	+ Is your knitted Rmarkdown document PROFESSIONAL? Think: Would I be comfortable sharing this document with a potential **future employer**?
 + Did you COMMENT your code?
 + Did you actually do the questions/tasks you were asked to do? For example,
-	+ Is part 1 acually tidy?
-	+ Did you do the right plots for part 2?
+	+ Is part 1 actually tidy and saved appropriately? You didn't merge in plotBites with the rest, right?
+	+ Did you do the right plots for part 2? Do your explanations match what the instructions tell you to do?
 	+ Is part 3 actually a flipbook with the right plot in it?
 + Are all documents filled out appropriately for the template? Are all documents in the right directory and named appropriately?
 + Have you ONLY LOADED libraries that are relevant for the GIVEN file? E.g., libraries used only in the R script should not be loaded into the RMarkdown document(s).
