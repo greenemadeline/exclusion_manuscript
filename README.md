@@ -31,9 +31,9 @@ In this paper, the authors sought to assess the effects of predator (here, parro
 	+ **Visualize** the data yet again as a **Flipbook** in a special Rmarkdown file. See below for more information. The resulting figure will be part of the fancy document you'll learn about for this project.
 
 		
-### Specific task instructions
+## Specific task instructions
 
-#### Task One: Tidying the data
+### Task One: Tidying the data
 + Perform this in an **R script** called `tidy_exclusion_data.R` which has been templated out for you. Be sure to move this script into your name directory before starting! 
 	+ To read in your data, use the `tidyverse` package `readxl`. This will not be loaded with the "primary" tidyverse libraries, but it will be installed when you install tidyverse. Make sure to load this package and read about its function `readxl::read_excel`.
 + Generally speaking, R scripts are NOT interactive documents! Therefore, you don't have to "show" or "print" the data for the FINAL product. When working on building up the script though, you have to be going line-by-line to make sure it all works.
@@ -44,7 +44,7 @@ In this paper, the authors sought to assess the effects of predator (here, parro
 + There WILL be NA's in the final output because some data is indeed missing! This is completely fine, but you must ensure that you are not accidentally (usually done by poor choices in joining) replacing known values with NAs.
 + **BONUS is possible here** by including at least TWO assertions in your script that check _properties of the data_. 
 
-#### Task Two: Visualizing the data
+### Task Two: Visualizing the data
 In the manuscript, the authors use primarily barplots with mean and standard error (GROAN) to display distributions of data. Your task is to remake **FOUR** figures from the paper from the options below. Choose choose one panel from each option, unless of course there is only one option. Your adventure!
 
 + Figure 3 either panel B or C
@@ -68,8 +68,7 @@ The goal is NOT to simply regurgitate their figures, but rather to **reimagine t
 + What scientific question does the plot address?
 + What trends does the plot show? What can you conclude from this figure? 
 
-
-#### Task Three: Visualizing the data with a flipbook
+### Task Three: Visualizing the data with a flipbook
 You're going to make a flipbook! What's a flipbook?
 
 + Get familiar with flipbooks conceptually by watching this [rstudio::conf 2020 talk](https://resources.rstudio.com/rstudio-conf-2020/flipbooks-evangeline-reynolds) talk.
