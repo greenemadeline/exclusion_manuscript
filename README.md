@@ -106,7 +106,8 @@ What will your flipbook be of? The authors make this claim:
 
 + **DO YOU HAVE ENOUGH COMMITS?**
 	+ For full credit there should be at least FIVE commits with INFORMATIVE ASSOCIATED MESSAGES. For example, only the first 2 commit messages in this XKCD are informative: [this](https://xkcd.com/1296/).
-+ Did you submit as a pull request by the deadline?
++ Did you submit as a pull request by the deadline? If you do NOT submit by a pull request but instead by email, you will automatically lose 50%. It's gotta be a PR timestamped by the deadline! 
+	+ I may not merge your PR before the deadline, but this will not affect your grade. As long as you send the PR on time you are fine! Like the post office.
 + Do all R files run/knit without errors **when run from the directory where they reside**?
 	+ Is your knitted Rmarkdown document PROFESSIONAL? Think: Would I be comfortable sharing this document with a potential **future employer**?
 + Did you COMMENT your code?
