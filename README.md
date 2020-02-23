@@ -71,7 +71,7 @@ The goal is NOT to simply regurgitate their figures, but rather to **reimagine t
 ### Task Three: Visualizing the data with a flipbook
 You're going to make a flipbook! What's a flipbook?
 
-+ Get familiar with flipbooks conceptually by watching this [rstudio::conf 2020 talk](https://resources.rstudio.com/rstudio-conf-2020/flipbooks-evangeline-reynolds) talk.
++ Get familiar with flipbooks conceptually by watching this [rstudio::conf 2020 talk](https://resources.rstudio.com/rstudio-conf-2020/flipbooks-evangeline-reynolds).
 + It comes in the package `flipbookr`[https://github.com/EvaMaeRey/flipbookr/]()! Learn more about this package.
 + Because this package is not yet on CRAN, you will need to install it from the github repository using the `remotes` package. Many times this is written instead as the `devtools` package, but the maintainers of `devtools` are no longer retaining this specific functionality in future releases, so it is best to use `remotes`.
 	
