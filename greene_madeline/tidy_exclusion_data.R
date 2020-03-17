@@ -10,31 +10,23 @@ library(readxl)
 
 
 #the pathway to the raw data and input excel file :
-# must use RELATIVE path so it works on ANY computer
-#rawdata_path <- "/cloud/project/raw_data/exclusionExperimentData.xlsx"
-rawdata_path <- "../raw_data/exclusionExperimentData.xlsx"
+rawdata_path <- "/cloud/project/raw_data/"
 
+#the pathway to the excel file
+Exclusion_Exp_Data <- "/cloud/project/raw_data/exclusionExperimentData.xlsx"
+
+#Final CSV files as new variable names
+treatment_data <- "/cloud/project/greene_madeline/treatment_results.csv"
+plotbite_data <- "/cloud/project/greene_madeline/plot_bites.csv"
 # Load the excel sheets here ---------------------------------------------------------------
 #defined the pathway to access the excel file sheet above
 
-# this is NOT A dataset!! JUST INFO about the data - don't read it in!!
-#read_excel(path = rawdata_path, sheet = "metaData") -> meta_data #renamed the datasheets so easier to access the data 
 
-read_excel(path = rawdata_path, sheet = "algalDiversity") -> algal_diversity
-read_excel(path = rawdata_path, sheet = "coralGrowth") -> coral_growth
-read_excel(path = rawdata_path, sheet = "exclosureCover") -> exclosure_cover
-read_excel(path = rawdata_path, sheet =  "plotBites") -> plot_bites
-read_excel(path = rawdata_path, sheet = "recruitment") -> recruitment
-
-#showing all outputs as followed to make sure it was loaded in properly
-# in scripts, don't print out like this - run via console to check that they are read in properly
-#algal_diversity
-#coral_growth
-#exclosure_cover
-#plot_bites
-#recruitment
-
-
+read_excel(Exclusion_Exp_Data, sheet = "algalDiversity") -> algal_diversity
+read_excel(Exclusion_Exp_Data, sheet = "coralGrowth") -> coral_growth
+read_excel(Exclusion_Exp_Data, sheet = "exclosureCover") -> exclosure_cover
+read_excel(Exclusion_Exp_Data, sheet =  "plotBites") -> plot_bites
+read_excel(Exclusion_Exp_Data, sheet = "recruitment") -> recruitment
 
 
 # Tidy and wrangle the data here --------------------------------------------------------------
@@ -97,5 +89,6 @@ treatment_results_tibble
 
 # Export the data sets to two correctly-named CSV files (see instructions!) here --------------
 
-write_csv(treatment_results_tibble, path = "/cloud/project/datascience_midterm/greene_madeline/treatment_results.csv" )
-write_csv(tidied_plot_bites, path = "/cloud/project/datascience_midterm/greene_madeline/plot_bites.csv")
+write_csv(treatment_results_tibble, path = treatment_data)
+write_csv(tidied_plot_bites, path = plotbite_data)
+
