@@ -1,12 +1,14 @@
 ---
 title: "Midterm Project Part Two"
-author: "YOUR NAME GOES HERE"
+author: "Madeline Greene"
 output: html_document
 ---
 <!-- Remember to set a custom THEME and HIGHLIGHTING in the YAML front matter above -->
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(readxl)
 ### All libraries must be loaded in this chunk
 ### Any global options you'd like to set (a global ggplot theme for example) should go here
 ```
@@ -18,6 +20,21 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 ## Read in and save your two tidy CSV files here for downstream use. 
 ## Show their output with head() for reproduciblity!
+rawdata_path <- "/cloud/project/raw_data/exclusionExperimentData.xlsx" #defined the pathway to access the excel file sheet
+read_excel(rawdata_path, "metaData") -> meta_data #renamed the datasheets so easier to access the data 
+read_excel(rawdata_path, sheet = "algalDiversity") -> algal_diversity
+read_excel(rawdata_path, sheet = "coralGrowth") -> coral_growth
+read_excel(rawdata_path, sheet = "exclosureCover") -> exclosure_cover
+read_excel(rawdata_path, sheet =  "plotBites") -> plot_bites
+read_excel(rawdata_path, sheet = "recruitment") -> recruitment
+
+#showing all outputs with head() as followed 
+head(meta_data)
+head(algal_diversity)
+head(coral_growth)
+head(exclosure_cover)
+head(plot_bites)
+head(recruitment)
 
 ```
 
