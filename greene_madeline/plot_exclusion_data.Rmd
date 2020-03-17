@@ -7,6 +7,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 
 ### All libraries must be loaded in this chunk
 ### Any global options you'd like to set (a global ggplot theme for example) should go here
@@ -19,7 +20,10 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 ## Read in and save your two tidy CSV files here for downstream use. 
 ## Show their output with head() for reproduciblity!
-
+read_csv("treatment_results.csv") -> treatment_results
+head(treatment_results)
+read_csv("plot_bites.csv") -> plot_bites
+head(plot_bites)
 ```
 
 
