@@ -27,16 +27,33 @@ head(plot_bites)
 ```
 
 
-## Figure W
+## Figure 3B
 
 ```{r}
 ## Code to prepare data for plotting goes here. 
 ## It should save a dataset you can use to plot in the next chunk.
+plot_bites %>%
+  filter(family == c("Acanthuridae", "Scaridae"), treatment == c("Full", "Partial", "Control")) %>% 
+  #only need the two families according to previos graph and then filtered all treatment types
+  select(treatment,family,timeCorrBites) -> new_bites_hour
+  #out of all the columns, only needed treatment, family, and timeCorrBites
+
+head(new_bites_hour)
+#making sure it has all necessary components for graph
 ```
 
 ```{r}
 ## plot the data here.
 ## ensure an appropriate figure size and legible output by setting the fig.width and fig.height for this chunk
+new_bites_hour %>%
+  ggplot(aes(x = family, y= timeCorrBites)) +
+  geom_jitter(aes(color=treatment), alpha=0.5)+ #used alpha so can guarentee seeing all of the points
+  scale_color_brewer(palette= "Dark2") + #colorblind friendly palette
+  labs(x = "Family", y = "Bites Per Minute", color = "Treatment") ->figure3b 
+  #as per the metadata, it is by minute not hour
+
+figure3b
+
 ```
 
 
