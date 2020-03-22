@@ -47,7 +47,7 @@ head(new_bites_hour)
 ## ensure an appropriate figure size and legible output by setting the fig.width and fig.height for this chunk
 new_bites_hour %>%
   ggplot(aes(x = family, y= timeCorrBites)) +
-  geom_jitter(aes(color=treatment), alpha=0.5)+ #used alpha so can guarentee seeing all of the points
+  geom_jitter(aes(color=treatment), alpha=0.5)+ #used alpha so can guarantee seeing all of the points
   scale_color_brewer(palette= "Dark2") + #colorblind friendly palette
   labs(x = "Family", y = "Bites Per Minute", color = "Treatment") ->figure3b 
   #as per the metadata, it is by minute not hour
@@ -56,14 +56,15 @@ figure3b
 
 ```
 
-
-Replace this text with a few sentences intepreting your figure, **according to the directions!**
+The data here was very hard to interpret from the figure they provided us with. I believe that the metadata sheet and the figures did not correspond correctly with each other. When viewing the data, it appears that both families had a lot of the same results of 0 bites per minute. Because I am not knowledgeable about this specific data, I cannot tell if that is normal or an error of results. There were a few outliers, such as the Acanthuridae family with one result of over 150 bites per minute. I believe that a jitter plot was appropriate to display this data because it was able to show compare both families and provide exact points of the recorded data.  
 
 ## Figure X
 
 ```{r}
 ## Code to prepare data for plotting goes here. 
 ## It should save a dataset you can use to plot in the next chunk.
+
+
 ```
 
 ```{r}
