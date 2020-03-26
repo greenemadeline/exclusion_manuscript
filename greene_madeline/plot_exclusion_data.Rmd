@@ -88,11 +88,13 @@ new_artcal_results %>%
   #colorblind friendly palette 
   theme(strip.background = element_rect(fill = "honeydew3")) +
   #felt like switching up the header color
-  labs(y = "Percent Cover (%)", fill = "Treatment")
+  labs(y = "Percent Cover (%)", fill = "Treatment") -> figure_5b
+
+figure_5b
 ```
 
 
-Replace this text with a few sentences intepreting your figure, **according to the directions!**
+By viewing the boxplot that was just created, it shows that the full treatment has the highest values over the three types of treatments. This conclusion is the same as the original figure provided for this data. I believe that this form of visualization helps understand the data more than the original figure because it provides more information such as outliers and the mean. 
 
 
 ## Figure Y
