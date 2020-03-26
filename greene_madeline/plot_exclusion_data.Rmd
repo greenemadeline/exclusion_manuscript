@@ -97,16 +97,35 @@ figure_5b
 By viewing the boxplot that was just created, it shows that the full treatment has the highest values over the three types of treatments. This conclusion is the same as the original figure provided for this data. I believe that this form of visualization helps understand the data more than the original figure because it provides more information such as outliers and the mean. 
 
 
-## Figure Y
+## Figure 6A
 
 ```{r}
 ## Code to prepare data for plotting goes here. 
 ## It should save a dataset you can use to plot in the next chunk.
+
+treatment_results %>%
+ mutate(Morph = case_when(morph == "mound.crust" ~ "Mounding & Encrusting Corals", morph == "branch" ~ "Branching Corals")) %>%
+  drop_na(Morph) %>%
+  #removed NAs
+  select(- morph) %>%
+  #removed column since created a new one with new names
+  select(Morph, growth, treatment) -> new_morph
+  #only shows what I will be graphing so it is cleaner to look like and when deciding how to wrangle data
+  
+new_morph
 ```
 
 ```{r}
 ## plot the data here.
 ## ensure an appropriate figure size and legible output by setting the fig.width and fig.height for this chunk
+
+new_morph %>%
+  ggplot(aes(x = Morph, y = growth, fill = treatment)) +
+  geom_violin() +
+  #would show distribution of data
+  scale_fill_brewer(palette = "Dark2") +
+  #colorblind friendly
+  labs(y = "Change in Live Tissue Area", fill = "Treatment")
 ```
 
 
