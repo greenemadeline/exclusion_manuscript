@@ -109,6 +109,8 @@ treatment_results %>%
   #removed NAs
   select(- morph) %>%
   #removed column since created a new one with new names
+  mutate(growth = growth * 100) %>%
+  #after looking at data again and graph, realized that it was not in percent so needed to multiply by 100
   select(Morph, growth, treatment) -> new_morph
   #only shows what I will be graphing so it is cleaner to look like and when deciding how to wrangle data
   
@@ -121,23 +123,27 @@ new_morph
 
 new_morph %>%
   ggplot(aes(x = Morph, y = growth, fill = treatment)) +
-  geom_violin() +
-  #would show distribution of data
+  geom_violin(alpha = 0.5) +
+  #would show distribution of data/be able to properly see black line
   scale_fill_brewer(palette = "Dark2") +
   #colorblind friendly
-  labs(y = "Change in Live Tissue Area", fill = "Treatment")
+  labs(y = "Change in Live Tissue Area (%)", fill = "Treatment") +
+  geom_hline(yintercept = 0, col = "black") 
+  #had a black line go through the y intercept to show where there is 0 % change
 ```
 
 
-Replace this text with a few sentences intepreting your figure, **according to the directions!**
+This figure is significantly different from the figure provided in the paper. It provides more information than just the average with a standard deviation line. I used a violin plot to show the distribution of where there were changes in live tissue. I did in fact change my original wrangled data after initially plotting. When I first plotted, I noticed that the y values were -1 to 3. This would not make sense based on the data or representing a percent change. Therefore, I re-wrangled my data to make it a percent by multiplying by 100. The data looks different, probably because it is not an average and rather a distribution. In the original figure, it ranged from -100 to 100 but in this new figure, it ranges from -100 to 300. This is showing that it is true that their way of measuring means that is greater than 100% is possible due to multiple layers of covers.
 
 
 
-## Figure Z
+## Figure 6B
 
 ```{r}
 ## Code to prepare data for plotting goes here. 
 ## It should save a dataset you can use to plot in the next chunk.
+
+  
 ```
 
 ```{r}
