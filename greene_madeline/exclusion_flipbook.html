@@ -25,11 +25,236 @@ class: center, middle, inverse, title-slide
 
 ```r
 ## read in the data
+read_csv("plot_bites.csv") -&gt; data_plot_bites
+
+data_plot_bites
+```
+
+```
+# A tibble: 333 x 7
+   treatment family      sizeBin Month     Year timeCorrBites timeCorrBiomassBi…
+   &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt;         &lt;dbl&gt;              &lt;dbl&gt;
+ 1 Control   Acanthurid… 12.5    Septemb…  2013           159              9495.
+ 2 External  Acanthurid… 12.5    Septemb…  2013           151             10444.
+ 3 Full      Acanthurid… 12.5    Septemb…  2013             0                 0 
+ 4 Partial   Acanthurid… 12.5    Septemb…  2013           357             26199.
+ 5 Control   Scaridae    12.5    Septemb…  2013            20               556.
+ 6 External  Scaridae    12.5    Septemb…  2013            25              1277.
+ 7 Partial   Scaridae    12.5    Septemb…  2013             9               269.
+ 8 Control   Acanthurid… 17.5    Septemb…  2013            19              2042.
+ 9 External  Acanthurid… 17.5    Septemb…  2013             0                 0 
+10 Full      Acanthurid… 17.5    Septemb…  2013             0                 0 
+# … with 323 more rows
+```
+
+```r
 ## get it in plotable form
+data_plot_bites %&gt;%
+  filter(treatment == c("Control", "External")) %&gt;%
+  select(treatment, Month, Year, timeCorrBites) -&gt; plot_bites_flipbook
+
+
+head(plot_bites_flipbook)
+```
+
+```
+# A tibble: 6 x 4
+  treatment Month      Year timeCorrBites
+  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;         &lt;dbl&gt;
+1 Control   September  2013           159
+2 External  September  2013           151
+3 Control   September  2013            20
+4 External  September  2013            25
+5 Control   September  2013             0
+6 External  September  2013             0
 ```
 
 
+---
 
+class: split-40
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+*plot_bites_flipbook
+```
+]]
+.column[.content[
+
+```
+# A tibble: 63 x 4
+   treatment Month      Year timeCorrBites
+   &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;         &lt;dbl&gt;
+ 1 Control   September  2013           159
+ 2 External  September  2013           151
+ 3 Control   September  2013            20
+ 4 External  September  2013            25
+ 5 Control   September  2013             0
+ 6 External  September  2013             0
+ 7 Control   September  2013            23
+ 8 External  September  2013             0
+ 9 Control   September  2013             0
+10 External  September  2013             0
+# … with 53 more rows
+```
+]]
+---
+class: split-40
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+plot_bites_flipbook %&gt;%  
+* ggplot(aes(x = Month, y= timeCorrBites))
+```
+]]
+.column[.content[
+&lt;img src="exclusion_flipbook_files/figure-html/myplot_auto_2_output-1.png" width="432" /&gt;
+]]
+---
+class: split-40
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+plot_bites_flipbook %&gt;%  
+  ggplot(aes(x = Month, y= timeCorrBites)) +  
+#viewing change of bites per month
+* geom_jitter(aes(color=treatment))
+```
+]]
+.column[.content[
+&lt;img src="exclusion_flipbook_files/figure-html/myplot_auto_3_output-1.png" width="432" /&gt;
+]]
+---
+class: split-40
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+plot_bites_flipbook %&gt;%  
+  ggplot(aes(x = Month, y= timeCorrBites)) +  
+#viewing change of bites per month
+  geom_jitter(aes(color=treatment)) +  
+#created jitter plot, changing color by type of treatment
+* facet_wrap(~Year)
+```
+]]
+.column[.content[
+&lt;img src="exclusion_flipbook_files/figure-html/myplot_auto_4_output-1.png" width="432" /&gt;
+]]
+---
+class: split-40
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+plot_bites_flipbook %&gt;%  
+  ggplot(aes(x = Month, y= timeCorrBites)) +  
+#viewing change of bites per month
+  geom_jitter(aes(color=treatment)) +  
+#created jitter plot, changing color by type of treatment
+  facet_wrap(~Year) +  
+#split up/compare by Year
+* scale_color_brewer(palette= "Dark2")
+```
+]]
+.column[.content[
+&lt;img src="exclusion_flipbook_files/figure-html/myplot_auto_5_output-1.png" width="432" /&gt;
+]]
+---
+class: split-40
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+plot_bites_flipbook %&gt;%  
+  ggplot(aes(x = Month, y= timeCorrBites)) +  
+#viewing change of bites per month
+  geom_jitter(aes(color=treatment)) +  
+#created jitter plot, changing color by type of treatment
+  facet_wrap(~Year) +  
+#split up/compare by Year
+  scale_color_brewer(palette= "Dark2") +  
+#colorblind friendly palette
+* labs(y = "Bites Per Minute")
+```
+]]
+.column[.content[
+&lt;img src="exclusion_flipbook_files/figure-html/myplot_auto_6_output-1.png" width="432" /&gt;
+]]
+---
+class: split-40
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+plot_bites_flipbook %&gt;%  
+  ggplot(aes(x = Month, y= timeCorrBites)) +  
+#viewing change of bites per month
+  geom_jitter(aes(color=treatment)) +  
+#created jitter plot, changing color by type of treatment
+  facet_wrap(~Year) +  
+#split up/compare by Year
+  scale_color_brewer(palette= "Dark2") +  
+#colorblind friendly palette
+  labs(y = "Bites Per Minute") +  
+#changed y-axis title
+* labs(color = "Treatment")
+```
+]]
+.column[.content[
+&lt;img src="exclusion_flipbook_files/figure-html/myplot_auto_7_output-1.png" width="432" /&gt;
+]]
+---
+class: split-40
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+plot_bites_flipbook %&gt;%  
+  ggplot(aes(x = Month, y= timeCorrBites)) +  
+#viewing change of bites per month
+  geom_jitter(aes(color=treatment)) +  
+#created jitter plot, changing color by type of treatment
+  facet_wrap(~Year) +  
+#split up/compare by Year
+  scale_color_brewer(palette= "Dark2") +  
+#colorblind friendly palette
+  labs(y = "Bites Per Minute") +  
+#changed y-axis title
+  labs(color = "Treatment")  
+#changed legend title
+```
+]]
+.column[.content[
+&lt;img src="exclusion_flipbook_files/figure-html/myplot_auto_8_output-1.png" width="432" /&gt;
+]]
 
 ---
     </textarea>
