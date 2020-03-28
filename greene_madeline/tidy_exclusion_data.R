@@ -34,15 +34,18 @@ algal_diversity %>%
   mutate(treatment = str_replace_all(treatment, c("Partial\r\r\nCage" = "Partial", "Full\r\r\nCage" = "Full"))) %>% 
   #needed to mutate the string because in the console when viewed, the string had backslashes and wasn't tidy 
   #have to use str_replace_all not just str_replace (had an error)
-  rename("Algal_Total" = "totSpecies", "Algal_Species" = "numSpecies") -> tidied_algal_diversity 
+  rename("Algal_Total" = "totSpecies", "Algal_Species" = "numSpecies") %>%
+  distinct() -> tidied_algal_diversity 
   #renaming each col so it is easier to understand what the data is representing 
 
 tidied_algal_diversity #viewed to make sure printed correctly
 
 coral_growth %>%
-  mutate(treatment = str_replace_all(treatment, c("C" = "Control", "E\r\r\nExclosure" = "Full", "P\r\r\nExclosure" = "Partial"))) -> tidied_coral_growth
+  mutate(treatment = str_replace_all(treatment, c("C" = "Control", "E\r\r\nExclosure" = "Full", "P\r\r\nExclosure" = "Partial"))) %>%
+  distinct()-> tidied_coral_growth
   # again, if I just wrote, E Exclosure as viewed in the tibble, it would not work
   # making all treatments the same three options : Control, Full, Partial so all the data is uniform
+  #used distinct to verify no duplicates
 
 tidied_coral_growth
 
@@ -61,7 +64,8 @@ exclosure_cover %>%
 #thought I would need more code written, but used ?separate and stated that if you just want to separate the second variable to do separate(x, c(NA, "B"))
   mutate(Month = str_replace_all(Month, c("Sep" = "September", "Nov" = "November", "Feb" = "February"))) %>%
 #wrote the full months for my sanity  
-  mutate(Year = str_replace_all(Year, c("13" = "2013", "14" = "2014"))) -> tidied_exclosure_cover
+  mutate(Year = str_replace_all(Year, c("13" = "2013", "14" = "2014"))) %>%
+  distinct() -> tidied_exclosure_cover
 #wrote it in the proper year format
 
 tidied_exclosure_cover
@@ -82,13 +86,18 @@ recruitment
 tidied_algal_diversity %>%
   left_join(tidied_coral_growth) %>%
   left_join(tidied_exclosure_cover) %>%
-  left_join(recruitment) -> treatment_results_tibble
+  left_join(recruitment) %>%
+  distinct()-> treatment_results_tibble
+
 #leftjoined all data
 
 treatment_results_tibble
+
 
 # Export the data sets to two correctly-named CSV files (see instructions!) here --------------
 
 write_csv(treatment_results_tibble, path = treatment_data)
 write_csv(tidied_plot_bites, path = plotbite_data)
+
+
 
