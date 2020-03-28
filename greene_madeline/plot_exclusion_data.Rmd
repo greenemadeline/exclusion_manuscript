@@ -1,7 +1,12 @@
 ---
 title: "Midterm Project Part Two"
 author: "Madeline Greene"
-output: html_document
+output: 
+  html_document:
+    theme: united
+    highlight: tango
+    
+
 ---
 <!-- Remember to set a custom THEME and HIGHLIGHTING in the YAML front matter above -->
 
@@ -128,8 +133,10 @@ new_morph %>%
   scale_fill_brewer(palette = "Dark2") +
   #colorblind friendly
   labs(y = "Change in Live Tissue Area (%)", fill = "Treatment") +
-  geom_hline(yintercept = 0, col = "black") 
+  geom_hline(yintercept = 0, col = "black")  -> figure_6a
   #had a black line go through the y intercept to show where there is 0 % change
+
+figure_6a
 ```
 
 
@@ -144,6 +151,8 @@ This figure is significantly different from the figure provided in the paper. It
 ## It should save a dataset you can use to plot in the next chunk.
 
 treatment_results %>%
+  filter(Species == "totalAlgae") %>%
+  #only plotting Algae totals
    mutate(Morph = case_when(morph == "mound.crust" ~ "Mounding & Encrusting Corals", morph == "branch" ~ "Branching Corals")) %>%
   drop_na(Morph) %>%
   #removed NAs
@@ -169,7 +178,9 @@ new_algal_cover %>%
   #wanted to separate morphs and treatments to better understand data
   scale_color_brewer(palette = "Dark2") +
   #colorblind friendly color
-  labs(y = "Change in Live Tissue Area (%)", x = "Algal Cover (%)", color = "Treatment") -> figure_6b
+  labs(y = "Change in Live Tissue Area (%)", x = "Algal Cover (%)", color = "Treatment") +
+  geom_smooth(method = "lm") -> figure_6b
+  #made smooth trendlines
 
 figure_6b
 ```
