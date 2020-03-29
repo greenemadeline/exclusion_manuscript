@@ -4,7 +4,7 @@
     <title>Midterm Project Part 3</title>
     <meta charset="utf-8" />
     <meta name="author" content="Madeline Greene" />
-    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/hygge.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
   </head>
@@ -27,46 +27,40 @@ class: center, middle, inverse, title-slide
 ## read in the data
 read_csv("plot_bites.csv") -&gt; data_plot_bites
 
-data_plot_bites
+head(data_plot_bites)
 ```
 
 ```
-# A tibble: 333 x 7
-   treatment family      sizeBin Month     Year timeCorrBites timeCorrBiomassBi…
-   &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt;         &lt;dbl&gt;              &lt;dbl&gt;
- 1 Control   Acanthurid… 12.5    Septemb…  2013           159              9495.
- 2 External  Acanthurid… 12.5    Septemb…  2013           151             10444.
- 3 Full      Acanthurid… 12.5    Septemb…  2013             0                 0 
- 4 Partial   Acanthurid… 12.5    Septemb…  2013           357             26199.
- 5 Control   Scaridae    12.5    Septemb…  2013            20               556.
- 6 External  Scaridae    12.5    Septemb…  2013            25              1277.
- 7 Partial   Scaridae    12.5    Septemb…  2013             9               269.
- 8 Control   Acanthurid… 17.5    Septemb…  2013            19              2042.
- 9 External  Acanthurid… 17.5    Septemb…  2013             0                 0 
-10 Full      Acanthurid… 17.5    Septemb…  2013             0                 0 
-# … with 323 more rows
+# A tibble: 6 x 7
+  treatment family      sizeBin Month     Year timeCorrBites timeCorrBiomassBit…
+  &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt;         &lt;dbl&gt;               &lt;dbl&gt;
+1 Control   Acanthurid… 12.5    Septemb…  2013           159               9495.
+2 External  Acanthurid… 12.5    Septemb…  2013           151              10444.
+3 Full      Acanthurid… 12.5    Septemb…  2013             0                  0 
+4 Partial   Acanthurid… 12.5    Septemb…  2013           357              26199.
+5 Control   Scaridae    12.5    Septemb…  2013            20                556.
+6 External  Scaridae    12.5    Septemb…  2013            25               1277.
 ```
 
 ```r
 ## get it in plotable form
 data_plot_bites %&gt;%
-  filter(treatment == c("Control", "External")) %&gt;%
-  select(treatment, Month, Year, timeCorrBites) -&gt; plot_bites_flipbook
-
+  filter(treatment %in% c("Control", "External")) %&gt;%
+  select(treatment,family, Month, Year, timeCorrBites) -&gt; plot_bites_flipbook
 
 head(plot_bites_flipbook)
 ```
 
 ```
-# A tibble: 6 x 4
-  treatment Month      Year timeCorrBites
-  &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;         &lt;dbl&gt;
-1 Control   September  2013           159
-2 External  September  2013           151
-3 Control   September  2013            20
-4 External  September  2013            25
-5 Control   September  2013             0
-6 External  September  2013             0
+# A tibble: 6 x 5
+  treatment family       Month      Year timeCorrBites
+  &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;     &lt;dbl&gt;         &lt;dbl&gt;
+1 Control   Acanthuridae September  2013           159
+2 External  Acanthuridae September  2013           151
+3 Control   Scaridae     September  2013            20
+4 External  Scaridae     September  2013            25
+5 Control   Acanthuridae September  2013            19
+6 External  Acanthuridae September  2013             0
 ```
 
 
@@ -80,27 +74,11 @@ count: false
 .column[.content[
 
 ```r
-*plot_bites_flipbook
+* ggplot(plot_bites_flipbook, aes(x = Month, y= timeCorrBites))
 ```
 ]]
 .column[.content[
-
-```
-# A tibble: 63 x 4
-   treatment Month      Year timeCorrBites
-   &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;         &lt;dbl&gt;
- 1 Control   September  2013           159
- 2 External  September  2013           151
- 3 Control   September  2013            20
- 4 External  September  2013            25
- 5 Control   September  2013             0
- 6 External  September  2013             0
- 7 Control   September  2013            23
- 8 External  September  2013             0
- 9 Control   September  2013             0
-10 External  September  2013             0
-# … with 53 more rows
-```
+&lt;img src="exclusion_flipbook_files/figure-html/myplot_auto_1_output-1.png" width="432" /&gt;
 ]]
 ---
 class: split-40
@@ -111,8 +89,9 @@ count: false
 .column[.content[
 
 ```r
-plot_bites_flipbook %&gt;%  
-* ggplot(aes(x = Month, y= timeCorrBites))
+  ggplot(plot_bites_flipbook, aes(x = Month, y= timeCorrBites)) +  
+#viewing change of bites per month
+* labs(y = "Bites Per Minute")
 ```
 ]]
 .column[.content[
@@ -127,10 +106,11 @@ count: false
 .column[.content[
 
 ```r
-plot_bites_flipbook %&gt;%  
-  ggplot(aes(x = Month, y= timeCorrBites)) +  
+  ggplot(plot_bites_flipbook, aes(x = Month, y= timeCorrBites)) +  
 #viewing change of bites per month
-* geom_jitter(aes(color=treatment))
+  labs(y = "Bites Per Minute") +  
+#changed y-axis title
+* labs(color = "Treatment")
 ```
 ]]
 .column[.content[
@@ -145,12 +125,13 @@ count: false
 .column[.content[
 
 ```r
-plot_bites_flipbook %&gt;%  
-  ggplot(aes(x = Month, y= timeCorrBites)) +  
+  ggplot(plot_bites_flipbook, aes(x = Month, y= timeCorrBites)) +  
 #viewing change of bites per month
-  geom_jitter(aes(color=treatment)) +  
-#created jitter plot, changing color by type of treatment
-* facet_wrap(~Year)
+  labs(y = "Bites Per Minute") +  
+#changed y-axis title
+  labs(color = "Treatment") +  
+#changed legend title
+* theme(strip.background = element_rect(fill = "seashell2"))
 ```
 ]]
 .column[.content[
@@ -165,13 +146,13 @@ count: false
 .column[.content[
 
 ```r
-plot_bites_flipbook %&gt;%  
-  ggplot(aes(x = Month, y= timeCorrBites)) +  
+  ggplot(plot_bites_flipbook, aes(x = Month, y= timeCorrBites)) +  
 #viewing change of bites per month
-  geom_jitter(aes(color=treatment)) +  
-#created jitter plot, changing color by type of treatment
-  facet_wrap(~Year) +  
-#split up/compare by Year
+  labs(y = "Bites Per Minute") +  
+#changed y-axis title
+  labs(color = "Treatment") +  
+#changed legend title
+  theme(strip.background = element_rect(fill = "seashell2")) +  
 * scale_color_brewer(palette= "Dark2")
 ```
 ]]
@@ -187,16 +168,16 @@ count: false
 .column[.content[
 
 ```r
-plot_bites_flipbook %&gt;%  
-  ggplot(aes(x = Month, y= timeCorrBites)) +  
+  ggplot(plot_bites_flipbook, aes(x = Month, y= timeCorrBites)) +  
 #viewing change of bites per month
-  geom_jitter(aes(color=treatment)) +  
-#created jitter plot, changing color by type of treatment
-  facet_wrap(~Year) +  
-#split up/compare by Year
+  labs(y = "Bites Per Minute") +  
+#changed y-axis title
+  labs(color = "Treatment") +  
+#changed legend title
+  theme(strip.background = element_rect(fill = "seashell2")) +  
   scale_color_brewer(palette= "Dark2") +  
 #colorblind friendly palette
-* labs(y = "Bites Per Minute")
+* geom_point(aes(color= treatment),position = position_dodge2(width = 0.6), size = 1)
 ```
 ]]
 .column[.content[
@@ -211,18 +192,18 @@ count: false
 .column[.content[
 
 ```r
-plot_bites_flipbook %&gt;%  
-  ggplot(aes(x = Month, y= timeCorrBites)) +  
+  ggplot(plot_bites_flipbook, aes(x = Month, y= timeCorrBites)) +  
 #viewing change of bites per month
-  geom_jitter(aes(color=treatment)) +  
-#created jitter plot, changing color by type of treatment
-  facet_wrap(~Year) +  
-#split up/compare by Year
-  scale_color_brewer(palette= "Dark2") +  
-#colorblind friendly palette
   labs(y = "Bites Per Minute") +  
 #changed y-axis title
-* labs(color = "Treatment")
+  labs(color = "Treatment") +  
+#changed legend title
+  theme(strip.background = element_rect(fill = "seashell2")) +  
+  scale_color_brewer(palette= "Dark2") +  
+#colorblind friendly palette
+  geom_point(aes(color= treatment),position = position_dodge2(width = 0.6), size = 1) +  
+#geom_point creates a scatterplot in which I colored by treatment
+* facet_wrap(~Year)
 ```
 ]]
 .column[.content[
@@ -237,23 +218,53 @@ count: false
 .column[.content[
 
 ```r
-plot_bites_flipbook %&gt;%  
-  ggplot(aes(x = Month, y= timeCorrBites)) +  
+  ggplot(plot_bites_flipbook, aes(x = Month, y= timeCorrBites)) +  
 #viewing change of bites per month
-  geom_jitter(aes(color=treatment)) +  
-#created jitter plot, changing color by type of treatment
-  facet_wrap(~Year) +  
-#split up/compare by Year
-  scale_color_brewer(palette= "Dark2") +  
-#colorblind friendly palette
   labs(y = "Bites Per Minute") +  
 #changed y-axis title
-  labs(color = "Treatment")  
+  labs(color = "Treatment") +  
 #changed legend title
+  theme(strip.background = element_rect(fill = "seashell2")) +  
+  scale_color_brewer(palette= "Dark2") +  
+#colorblind friendly palette
+  geom_point(aes(color= treatment),position = position_dodge2(width = 0.6), size = 1) +  
+#geom_point creates a scatterplot in which I colored by treatment
+  facet_wrap(~Year)+  
+#split up by Year
+* facet_wrap(family~Year)
 ```
 ]]
 .column[.content[
 &lt;img src="exclusion_flipbook_files/figure-html/myplot_auto_8_output-1.png" width="432" /&gt;
+]]
+---
+class: split-40
+count: false
+ 
+
+ 
+.column[.content[
+
+```r
+  ggplot(plot_bites_flipbook, aes(x = Month, y= timeCorrBites)) +  
+#viewing change of bites per month
+  labs(y = "Bites Per Minute") +  
+#changed y-axis title
+  labs(color = "Treatment") +  
+#changed legend title
+  theme(strip.background = element_rect(fill = "seashell2")) +  
+  scale_color_brewer(palette= "Dark2") +  
+#colorblind friendly palette
+  geom_point(aes(color= treatment),position = position_dodge2(width = 0.6), size = 1) +  
+#geom_point creates a scatterplot in which I colored by treatment
+  facet_wrap(~Year)+  
+#split up by Year
+  facet_wrap(family~Year)  
+#split up compare by Year and family of species
+```
+]]
+.column[.content[
+&lt;img src="exclusion_flipbook_files/figure-html/myplot_auto_9_output-1.png" width="432" /&gt;
 ]]
 
 ---

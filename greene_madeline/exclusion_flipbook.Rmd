@@ -5,7 +5,7 @@ author: "Madeline Greene"
 output:
   xaringan::moon_reader:
     lib_dir: libs
-    css: [default, hygge, ninjutsu]
+    css: [metropolis, hygge, ninjutsu]
     nature:
       ratio: 16:10
       highlightStyle: github
@@ -26,32 +26,33 @@ library(tidyverse)
 ## read in the data
 read_csv("plot_bites.csv") -> data_plot_bites
 
-data_plot_bites
+head(data_plot_bites)
 
 ## get it in plotable form
 data_plot_bites %>%
-  filter(treatment == c("Control", "External")) %>%
-  select(treatment, Month, Year, timeCorrBites) -> plot_bites_flipbook
-
+  filter(treatment %in% c("Control", "External")) %>%
+  select(treatment,family, Month, Year, timeCorrBites) -> plot_bites_flipbook
 
 head(plot_bites_flipbook)
 
 ```
 
 ```{r myplot, include=F}
-plot_bites_flipbook %>%
-  ggplot(aes(x = Month, y= timeCorrBites)) +
+  ggplot(plot_bites_flipbook, aes(x = Month, y= timeCorrBites)) +
   #viewing change of bites per month
-  geom_jitter(aes(color=treatment)) +
-  #created jitter plot, changing color by type of treatment
-  facet_wrap(~Year) + 
-  #split up/compare by Year
-  scale_color_brewer(palette= "Dark2") +
-  #colorblind friendly palette
   labs(y = "Bites Per Minute") +
   #changed y-axis title
-  labs(color = "Treatment") 
+  labs(color = "Treatment") +
   #changed legend title
+  theme(strip.background = element_rect(fill = "seashell2")) +
+  scale_color_brewer(palette= "Dark2") +
+  #colorblind friendly palette
+  geom_point(aes(color= treatment),position = position_dodge2(width = 0.6), size = 1) +
+  #geom_point creates a scatterplot in which I colored by treatment
+  facet_wrap(~Year)+
+  #split up by Year
+  facet_wrap(family~Year)
+  #split up compare by Year and family of species
   
   
   
