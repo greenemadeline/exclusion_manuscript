@@ -46,21 +46,24 @@ head(data_plot_bites)
 ## get it in plotable form
 data_plot_bites %&gt;%
   filter(treatment %in% c("Control", "External")) %&gt;%
-  select(treatment,family, Month, Year, timeCorrBites) -&gt; plot_bites_flipbook
+  #only need these two treatments
+  mutate(time_corr_bites_hour = (timeCorrBites/60))%&gt;%
+  #need it out of an hour not minutes
+  select(treatment,family, Month, Year, time_corr_bites_hour) -&gt; plot_bites_flipbook
 
 head(plot_bites_flipbook)
 ```
 
 ```
 # A tibble: 6 x 5
-  treatment family       Month      Year timeCorrBites
-  &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;     &lt;dbl&gt;         &lt;dbl&gt;
-1 Control   Acanthuridae September  2013           159
-2 External  Acanthuridae September  2013           151
-3 Control   Scaridae     September  2013            20
-4 External  Scaridae     September  2013            25
-5 Control   Acanthuridae September  2013            19
-6 External  Acanthuridae September  2013             0
+  treatment family       Month      Year time_corr_bites_hour
+  &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;     &lt;dbl&gt;                &lt;dbl&gt;
+1 Control   Acanthuridae September  2013                2.65 
+2 External  Acanthuridae September  2013                2.52 
+3 Control   Scaridae     September  2013                0.333
+4 External  Scaridae     September  2013                0.417
+5 Control   Acanthuridae September  2013                0.317
+6 External  Acanthuridae September  2013                0    
 ```
 
 
@@ -74,7 +77,7 @@ count: false
 .column[.content[
 
 ```r
-* ggplot(plot_bites_flipbook, aes(x = Month, y= timeCorrBites))
+* ggplot(plot_bites_flipbook, aes(x = Month, y= time_corr_bites_hour))
 ```
 ]]
 .column[.content[
@@ -89,9 +92,9 @@ count: false
 .column[.content[
 
 ```r
-  ggplot(plot_bites_flipbook, aes(x = Month, y= timeCorrBites)) +  
+  ggplot(plot_bites_flipbook, aes(x = Month, y= time_corr_bites_hour)) +  
 #viewing change of bites per month
-* labs(y = "Bites Per Minute")
+* labs(y = "Bites Per Hour")
 ```
 ]]
 .column[.content[
@@ -106,9 +109,9 @@ count: false
 .column[.content[
 
 ```r
-  ggplot(plot_bites_flipbook, aes(x = Month, y= timeCorrBites)) +  
+  ggplot(plot_bites_flipbook, aes(x = Month, y= time_corr_bites_hour)) +  
 #viewing change of bites per month
-  labs(y = "Bites Per Minute") +  
+  labs(y = "Bites Per Hour") +  
 #changed y-axis title
 * labs(color = "Treatment")
 ```
@@ -125,9 +128,9 @@ count: false
 .column[.content[
 
 ```r
-  ggplot(plot_bites_flipbook, aes(x = Month, y= timeCorrBites)) +  
+  ggplot(plot_bites_flipbook, aes(x = Month, y= time_corr_bites_hour)) +  
 #viewing change of bites per month
-  labs(y = "Bites Per Minute") +  
+  labs(y = "Bites Per Hour") +  
 #changed y-axis title
   labs(color = "Treatment") +  
 #changed legend title
@@ -146,9 +149,9 @@ count: false
 .column[.content[
 
 ```r
-  ggplot(plot_bites_flipbook, aes(x = Month, y= timeCorrBites)) +  
+  ggplot(plot_bites_flipbook, aes(x = Month, y= time_corr_bites_hour)) +  
 #viewing change of bites per month
-  labs(y = "Bites Per Minute") +  
+  labs(y = "Bites Per Hour") +  
 #changed y-axis title
   labs(color = "Treatment") +  
 #changed legend title
@@ -168,9 +171,9 @@ count: false
 .column[.content[
 
 ```r
-  ggplot(plot_bites_flipbook, aes(x = Month, y= timeCorrBites)) +  
+  ggplot(plot_bites_flipbook, aes(x = Month, y= time_corr_bites_hour)) +  
 #viewing change of bites per month
-  labs(y = "Bites Per Minute") +  
+  labs(y = "Bites Per Hour") +  
 #changed y-axis title
   labs(color = "Treatment") +  
 #changed legend title
@@ -192,9 +195,9 @@ count: false
 .column[.content[
 
 ```r
-  ggplot(plot_bites_flipbook, aes(x = Month, y= timeCorrBites)) +  
+  ggplot(plot_bites_flipbook, aes(x = Month, y= time_corr_bites_hour)) +  
 #viewing change of bites per month
-  labs(y = "Bites Per Minute") +  
+  labs(y = "Bites Per Hour") +  
 #changed y-axis title
   labs(color = "Treatment") +  
 #changed legend title
@@ -218,9 +221,9 @@ count: false
 .column[.content[
 
 ```r
-  ggplot(plot_bites_flipbook, aes(x = Month, y= timeCorrBites)) +  
+  ggplot(plot_bites_flipbook, aes(x = Month, y= time_corr_bites_hour)) +  
 #viewing change of bites per month
-  labs(y = "Bites Per Minute") +  
+  labs(y = "Bites Per Hour") +  
 #changed y-axis title
   labs(color = "Treatment") +  
 #changed legend title
@@ -246,9 +249,9 @@ count: false
 .column[.content[
 
 ```r
-  ggplot(plot_bites_flipbook, aes(x = Month, y= timeCorrBites)) +  
+  ggplot(plot_bites_flipbook, aes(x = Month, y= time_corr_bites_hour)) +  
 #viewing change of bites per month
-  labs(y = "Bites Per Minute") +  
+  labs(y = "Bites Per Hour") +  
 #changed y-axis title
   labs(color = "Treatment") +  
 #changed legend title

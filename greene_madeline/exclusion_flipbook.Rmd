@@ -31,16 +31,19 @@ head(data_plot_bites)
 ## get it in plotable form
 data_plot_bites %>%
   filter(treatment %in% c("Control", "External")) %>%
-  select(treatment,family, Month, Year, timeCorrBites) -> plot_bites_flipbook
+  #only need these two treatments
+  mutate(time_corr_bites_hour = (timeCorrBites/60))%>%
+  #need it out of an hour not minutes
+  select(treatment,family, Month, Year, time_corr_bites_hour) -> plot_bites_flipbook
 
 head(plot_bites_flipbook)
 
 ```
 
 ```{r myplot, include=F}
-  ggplot(plot_bites_flipbook, aes(x = Month, y= timeCorrBites)) +
+  ggplot(plot_bites_flipbook, aes(x = Month, y= time_corr_bites_hour)) +
   #viewing change of bites per month
-  labs(y = "Bites Per Minute") +
+  labs(y = "Bites Per Hour") +
   #changed y-axis title
   labs(color = "Treatment") +
   #changed legend title
