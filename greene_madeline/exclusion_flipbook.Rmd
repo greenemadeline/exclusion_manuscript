@@ -5,7 +5,7 @@ author: "Madeline Greene"
 output:
   xaringan::moon_reader:
     lib_dir: libs
-    css: [metropolis, hygge, ninjutsu]
+    css: [metropolis,robot, ninjutsu]
     nature:
       ratio: 16:10
       highlightStyle: github
