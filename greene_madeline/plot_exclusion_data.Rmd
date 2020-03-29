@@ -48,7 +48,7 @@ head(new_bites_hour)
 #making sure it has all necessary components for graph
 ```
 
-```{r}
+```{r, fig.width= 10, fig.height= 5 }
 ## plot the data here.
 ## ensure an appropriate figure size and legible output by setting the fig.width and fig.height for this chunk
 new_bites_hour %>%
@@ -86,7 +86,7 @@ head(new_artcal_results)
 
 new_artcal_results %>%
   ggplot(aes(x = Month, y = Percent_cover, fill= treatment)) +
-  geom_boxplot() +
+  geom_boxplot(position = position_dodge2(width = 1)) +
   #would be able to show outliers in this form of graph as well as average
   facet_grid(~Year)+
   #wanted the years next to eachother to observe year difference
@@ -123,7 +123,7 @@ treatment_results %>%
 new_morph
 ```
 
-```{r}
+```{r, fig.width= 10, fig.height=5}
 ## plot the data here.
 ## ensure an appropriate figure size and legible output by setting the fig.width and fig.height for this chunk
 
@@ -167,7 +167,7 @@ treatment_results %>%
 new_algal_cover
 ```
 
-```{r}
+```{r, fig.width= 10, fig.height=5}
 ## plot the data here.
 ## ensure an appropriate figure size and legible output by setting the fig.width and fig.height for this chunk
 
