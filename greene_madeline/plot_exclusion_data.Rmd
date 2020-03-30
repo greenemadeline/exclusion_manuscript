@@ -188,23 +188,3 @@ figure_6b
 
 
 This figure is MUCH better for interpreting the data than the original one. This figure allows us to view the data by morph and treatment. By sectioning off each, it is easier to view and analyze. The control treatment had a low live tissue area change in relation to algal cover percent. There was one outlier at 300% change. The full treatment was the most spread out and had a large range of percent change and algal cover percentages. 
-
-<!-- 
-Remove the overall HTML comment if you want to do the bonus. 
-
-## BONUS FIGURE
-
-```{r}
-## Code to prepare data for plotting goes here. 
-## It should save a dataset you can use to plot in the next chunk.
-```
-
-```{r}
-## plot the data here.
-## ensure an appropriate figure size and legible output by setting the fig.width and fig.height for this chunk
-```
-
-
-Replace this text with a few sentences intepreting your figure, **according to the directions!**
-
--->
