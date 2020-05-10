@@ -1,4 +1,4 @@
-# Midterm Project for BIOL01301 (my data science class)
+# Midterm Project for BIOL01301 (data science class)
 
 The primary goal for this project is to (attempt to) tidy data and reproduce analyses from this manuscript: [Overfishing and the ecological impacts of extirpating large parrotfish from Caribbean coral reefs](https://doi.org/10.1002/ecm.1403). This paper underwent peer review and was accepted for publication in December 2019, but it is still in the "proofing" stages meaning the PDF is not yet formatted to the journal specification. A PDF of the (unformatted) paper is available [here](./manuscript/exclusion.pdf) and the supplementary information is available [here](./manuscript/exclusion_SI.pdf). In fact, this article has been reported on in science media:
 
@@ -11,7 +11,7 @@ In this paper, the authors sought to assess the effects of predator (here, parro
 + An experiment and associated analysis to test the effect of predator (parrotfish) size on algal and coral communities. The authors DID provide this data in an associated DataDryad repository [here](https://datadryad.org/stash/dataset/doi:10.5061/dryad.70rxwdbsz).
 
 
-## For this project, Iou will be re-analyzing their experimental data. 
+## For this project, I will be re-analyzing their experimental data. 
 
 ### Overall goals
 
